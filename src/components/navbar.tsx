@@ -1,12 +1,10 @@
 "use client";
 
-import {  Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-import {
-  Accordion,
-} from "@/components/ui/accordion";
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -22,6 +20,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
+import { ModeToggle } from "./ThemeToggle";
 
 interface MenuItem {
   title: string;
@@ -55,7 +54,7 @@ interface Navbar1Props {
 
 const Navbar = ({
   logo = {
-    url: "https://www.shadcnblocks.com",
+    url: "/",
     src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg",
     alt: "logo",
     title: "Shadcnblocks.com",
@@ -73,6 +72,10 @@ const Navbar = ({
     {
       title: "Contact",
       url: "/contact",
+    },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
     },
   ],
   auth = {
@@ -107,6 +110,7 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex gap-2">
+            <ModeToggle />
             <Button asChild variant="outline" size="sm">
               <Link href={auth.login.url}>{auth.login.title}</Link>
             </Button>
@@ -186,7 +190,6 @@ const renderMenuItem = (item: MenuItem) => {
 };
 
 const renderMobileMenuItem = (item: MenuItem) => {
-
   return (
     <Link key={item.title} href={item.url} className="text-md font-semibold">
       {item.title}
