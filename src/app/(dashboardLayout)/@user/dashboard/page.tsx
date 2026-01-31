@@ -1,7 +1,5 @@
-import React from 'react'
+import { redirect } from "next/navigation";
 
-export default function AdminDashboard() {
-  return (
-    <div>This is User Dashboard</div>
-  )
+export default function UserDashboard() {
+  return redirect("/dashboard/create-blog");
 }
